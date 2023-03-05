@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_management/presentation/common/constants/colors.dart';
 import 'package:school_management/presentation/common/constants/decorations.dart';
 import 'package:school_management/presentation/common/constants/styles.dart';
 
@@ -29,6 +30,7 @@ class CustomFormField extends StatelessWidget {
         keyboardType: textInputType,
         onChanged: onChanged,
         obscureText: obscureText ?? false,
+        cursorColor: kPrimaryColor,
         decoration: InputDecoration(
           isDense: true,
           contentPadding: const EdgeInsets.only(top: 22, left: 17),

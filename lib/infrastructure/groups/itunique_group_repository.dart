@@ -30,7 +30,7 @@ class ITUniqueGroupRepository extends IGroupRepository {
     } on DioError catch (_) {
       return left(const GroupFailure.unexpected());
     } on SocketException catch (_) {
-      return left(const GroupFailure.unexpected());
+      return left(const GroupFailure.serverError());
     }
   }
 }

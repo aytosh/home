@@ -34,19 +34,34 @@ class CustomTableRow extends StatelessWidget {
 }
 
 class CustomTableCell extends StatelessWidget {
-  final String? text;
+  final Widget? child;
 
-  const CustomTableCell(this.text, {super.key});
+  const CustomTableCell({super.key, this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       constraints: const BoxConstraints(minHeight: 52),
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 19),
-      child: Text(
-        text ?? "Cell",
-        style: kTableContentTextStyle,
-      ),
+      child: child,
     );
   }
+}
+
+getTableHeader(String? text) {
+  return CustomTableCell(
+    child: Text(
+      text ?? "Header",
+      style: kTableHeaderStyle,
+    ),
+  );
+}
+
+getTableContent(String? text) {
+  return CustomTableCell(
+    child: Text(
+      text ?? "Content",
+      style: kTableContentTextStyle,
+    ),
+  );
 }

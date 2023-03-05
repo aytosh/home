@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:school_management/presentation/student/add_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:school_management/application/family_members/create_family_member/create_family_member_cubit.dart';
+import 'package:school_management/application/students/get_student/student_cubit.dart';
+import 'package:school_management/presentation/common/widgets/add_button.dart';
+import 'package:school_management/presentation/student/contents/family_members/dialog/show_family_member_create_dialog.dart';
 import 'package:school_management/presentation/student/contents/family_members/familiy_members_layout.dart';
 
 class FamilyInformationContent extends StatelessWidget {
@@ -15,9 +19,27 @@ class FamilyInformationContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 32),
-          AddButton(),
+          AddButton(
+            onTap: () {
+              showFamilyMemberCreateDialog(context);
+            },
+          ),
           const SizedBox(height: 28),
-          const FamilyMembersLayout(),
+          BlocBuilder<StudentCubit, StudentState>(
+            builder: (_, state) => state.maybeMap(
+              loadSuccess: (state) {
+                final familyMemberIds = state.student.familyMemberIds!;
+
+                // TODO: See
+                context
+                    .read<CreateFamilyMemberCubit>()
+                    .studentIdChanged(state.student.id);
+
+                return FamilyMembersLayout(familyMemberIds: familyMemberIds);
+              },
+              orElse: () => const SizedBox.shrink(),
+            ),
+          ),
           const SizedBox(height: 88),
         ],
       ),

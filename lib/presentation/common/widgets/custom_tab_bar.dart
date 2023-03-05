@@ -17,39 +17,36 @@ class CustomTabBar extends HookWidget {
 
     return SizedBox(
       height: 44,
-      child: Align(
-        alignment: Alignment.center,
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount: labels.length,
-          itemBuilder: (_, index) => Material(
-            color: Colors.transparent,
-            child: InkWell(
-              onTap: () {
-                selectedTab.value = index;
-                onTap?.call(index);
-              },
-              child: Container(
-                margin: _getMargin(index),
-                alignment: Alignment.center,
-                child: Text(
-                  labels[index],
-                  style: index == selectedTab.value
-                      ? kTabBarLabelStyle.copyWith(
-                          shadows: const [
-                            Shadow(
-                              color: kTextColor,
-                              offset: Offset(0, -4),
-                            )
-                          ],
-                          color: Colors.transparent,
-                          decoration: TextDecoration.underline,
-                          decorationColor: kSecondaryLightColor,
-                          decorationThickness: 6,
-                        )
-                      : kTabBarUnselectedLabelStyle,
-                ),
+      child: ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: labels.length,
+        itemBuilder: (_, index) => Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () {
+              selectedTab.value = index;
+              onTap?.call(index);
+            },
+            child: Container(
+              margin: _getMargin(index),
+              alignment: Alignment.center,
+              child: Text(
+                labels[index],
+                style: index == selectedTab.value
+                    ? kTabBarLabelStyle.copyWith(
+                        shadows: const [
+                          Shadow(
+                            color: kTextColor,
+                            offset: Offset(0, -4),
+                          )
+                        ],
+                        color: Colors.transparent,
+                        decoration: TextDecoration.underline,
+                        decorationColor: kSecondaryLightColor,
+                        decorationThickness: 6,
+                      )
+                    : kTabBarUnselectedLabelStyle,
               ),
             ),
           ),

@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_management/application/students/get_student/student_cubit.dart';
 import 'package:school_management/presentation/common/constants/colors.dart';
 import 'package:school_management/presentation/common/constants/styles.dart';
-import 'package:school_management/presentation/common/utils/get_gender_title.dart';
-import 'package:school_management/presentation/common/utils/get_status_title.dart';
 import 'package:school_management/presentation/common/widgets/custom_avatar.dart';
 
 class StudentInformation extends StatelessWidget {
@@ -35,13 +33,13 @@ class StudentInformation extends StatelessWidget {
               const SizedBox(width: 17),
               Column(
                 children: [
-                  _getStudentField(getGenderTitle(student.gender)),
+                  _getStudentField(student.gender.title),
                   const SizedBox(height: 15),
                   _getStudentField(student.birthday),
                   const SizedBox(height: 10),
                   _getStudentField(student.group.title),
                   const SizedBox(height: 10),
-                  _getStudentField(getStatusTitle(student.status)),
+                  _getStudentField(student.status.title),
                 ],
               ),
             ],

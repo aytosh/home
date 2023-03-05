@@ -22,7 +22,7 @@ mixin _$CreateStudentState {
   String get gender => throw _privateConstructorUsedError;
   String get birthday => throw _privateConstructorUsedError;
   int get group => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  String get admissionYear => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   Option<Either<StudentFailure, Unit>> get studentFailureOrSuccessOption =>
@@ -46,7 +46,7 @@ abstract class $CreateStudentStateCopyWith<$Res> {
       String gender,
       String birthday,
       int group,
-      String status,
+      String admissionYear,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<StudentFailure, Unit>> studentFailureOrSuccessOption});
@@ -71,7 +71,7 @@ class _$CreateStudentStateCopyWithImpl<$Res, $Val extends CreateStudentState>
     Object? gender = null,
     Object? birthday = null,
     Object? group = null,
-    Object? status = null,
+    Object? admissionYear = null,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? studentFailureOrSuccessOption = null,
@@ -101,9 +101,9 @@ class _$CreateStudentStateCopyWithImpl<$Res, $Val extends CreateStudentState>
           ? _value.group
           : group // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      admissionYear: null == admissionYear
+          ? _value.admissionYear
+          : admissionYear // ignore: cast_nullable_to_non_nullable
               as String,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
@@ -136,7 +136,7 @@ abstract class _$$_CreateStudentStateCopyWith<$Res>
       String gender,
       String birthday,
       int group,
-      String status,
+      String admissionYear,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<StudentFailure, Unit>> studentFailureOrSuccessOption});
@@ -159,7 +159,7 @@ class __$$_CreateStudentStateCopyWithImpl<$Res>
     Object? gender = null,
     Object? birthday = null,
     Object? group = null,
-    Object? status = null,
+    Object? admissionYear = null,
     Object? showErrorMessages = null,
     Object? isSubmitting = null,
     Object? studentFailureOrSuccessOption = null,
@@ -189,9 +189,9 @@ class __$$_CreateStudentStateCopyWithImpl<$Res>
           ? _value.group
           : group // ignore: cast_nullable_to_non_nullable
               as int,
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
+      admissionYear: null == admissionYear
+          ? _value.admissionYear
+          : admissionYear // ignore: cast_nullable_to_non_nullable
               as String,
       showErrorMessages: null == showErrorMessages
           ? _value.showErrorMessages
@@ -221,7 +221,7 @@ class _$_CreateStudentState
       required this.gender,
       required this.birthday,
       required this.group,
-      required this.status,
+      required this.admissionYear,
       required this.showErrorMessages,
       required this.isSubmitting,
       required this.studentFailureOrSuccessOption});
@@ -239,7 +239,7 @@ class _$_CreateStudentState
   @override
   final int group;
   @override
-  final String status;
+  final String admissionYear;
   @override
   final bool showErrorMessages;
   @override
@@ -249,7 +249,7 @@ class _$_CreateStudentState
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateStudentState(firstName: $firstName, lastName: $lastName, patronymic: $patronymic, gender: $gender, birthday: $birthday, group: $group, status: $status, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, studentFailureOrSuccessOption: $studentFailureOrSuccessOption)';
+    return 'CreateStudentState(firstName: $firstName, lastName: $lastName, patronymic: $patronymic, gender: $gender, birthday: $birthday, group: $group, admissionYear: $admissionYear, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, studentFailureOrSuccessOption: $studentFailureOrSuccessOption)';
   }
 
   @override
@@ -263,7 +263,7 @@ class _$_CreateStudentState
       ..add(DiagnosticsProperty('gender', gender))
       ..add(DiagnosticsProperty('birthday', birthday))
       ..add(DiagnosticsProperty('group', group))
-      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('admissionYear', admissionYear))
       ..add(DiagnosticsProperty('showErrorMessages', showErrorMessages))
       ..add(DiagnosticsProperty('isSubmitting', isSubmitting))
       ..add(DiagnosticsProperty(
@@ -285,7 +285,8 @@ class _$_CreateStudentState
             (identical(other.birthday, birthday) ||
                 other.birthday == birthday) &&
             (identical(other.group, group) || other.group == group) &&
-            (identical(other.status, status) || other.status == status) &&
+            (identical(other.admissionYear, admissionYear) ||
+                other.admissionYear == admissionYear) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 other.showErrorMessages == showErrorMessages) &&
             (identical(other.isSubmitting, isSubmitting) ||
@@ -305,7 +306,7 @@ class _$_CreateStudentState
       gender,
       birthday,
       group,
-      status,
+      admissionYear,
       showErrorMessages,
       isSubmitting,
       studentFailureOrSuccessOption);
@@ -326,7 +327,7 @@ abstract class _CreateStudentState implements CreateStudentState {
       required final String gender,
       required final String birthday,
       required final int group,
-      required final String status,
+      required final String admissionYear,
       required final bool showErrorMessages,
       required final bool isSubmitting,
       required final Option<Either<StudentFailure, Unit>>
@@ -345,7 +346,7 @@ abstract class _CreateStudentState implements CreateStudentState {
   @override
   int get group;
   @override
-  String get status;
+  String get admissionYear;
   @override
   bool get showErrorMessages;
   @override

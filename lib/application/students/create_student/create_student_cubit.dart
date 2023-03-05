@@ -75,10 +75,10 @@ class CreateStudentCubit extends Cubit<CreateStudentState> {
     );
   }
 
-  Future<void> statusChanged(String status) async {
+  Future<void> admissionYearChanged(String admissionYear) async {
     emit(
       state.copyWith(
-        status: status,
+        admissionYear: admissionYear,
         studentFailureOrSuccessOption: none(),
       ),
     );
@@ -101,8 +101,7 @@ class CreateStudentCubit extends Cubit<CreateStudentState> {
       gender: state.gender,
       birthday: state.birthday,
       group: state.group,
-      status: state.status,
-      admissionYear: "2023-2024",
+      admissionYear: state.admissionYear,
     );
 
     emit(

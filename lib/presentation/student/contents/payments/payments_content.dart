@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:school_management/presentation/student/add_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:school_management/application/students/get_student/student_cubit.dart';
+import 'package:school_management/presentation/common/widgets/add_button.dart';
 import 'package:school_management/presentation/student/contents/payments/payments_layout.dart';
 
 class PaymentsContent extends StatelessWidget {
@@ -19,7 +21,18 @@ class PaymentsContent extends StatelessWidget {
             onTap: () {},
           ),
           const SizedBox(height: 28),
-          const PaymentsLayout(),
+          BlocBuilder<StudentCubit, StudentState>(
+            builder: (_, state) => state.maybeMap(
+              loadSuccess: (state) {
+                final paymentIds = state.student.paymentIds!;
+
+                // TODO: See
+
+                return PaymentsLayout(paymentIds: paymentIds);
+              },
+              orElse: () => const SizedBox.shrink(),
+            ),
+          ),
           const SizedBox(height: 88),
         ],
       ),

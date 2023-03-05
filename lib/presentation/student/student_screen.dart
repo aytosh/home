@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:school_management/application/students/get_student/student_cubit.dart';
+import 'package:school_management/application/family_members/create_family_member/create_family_member_cubit.dart';
+import 'package:school_management/application/family_members/get_family_members/family_members_cubit.dart';
+import 'package:school_management/application/fee_discounts/create_fee_discount/create_fee_discount_cubit.dart';
+import 'package:school_management/application/fee_discounts/get_fee_discounts/fee_discounts_cubit.dart';
+import 'package:school_management/application/fees/get_fee/fee_cubit.dart';
+import 'package:school_management/application/student_payment_plans/create_payment_plan/create_payment_plan_cubit.dart';
+import 'package:school_management/application/student_payment_plans/get_payment_plans/payment_plans_cubit.dart';
+import 'package:school_management/application/student_payments/get_payments/payments_cubit.dart';
+import 'package:school_management/injectable.dart';
 import 'package:school_management/presentation/common/constants/colors.dart';
 import 'package:school_management/presentation/common/utils/content_item.dart';
-
 import 'package:school_management/presentation/common/widgets/base.dart';
 import 'package:school_management/presentation/home/home_screen.dart';
 import 'package:school_management/presentation/student/contents/family_members/family_members_content.dart';
@@ -16,26 +23,54 @@ class StudentScreen extends StatelessWidget {
   static const name = "student";
   static const path = "/student";
 
-  final String id;
-
-  const StudentScreen({super.key, required this.id});
+  const StudentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    context.read<StudentCubit>().getStudent(id);
-
     final contentItems = [
-      const ContentItem(
+      ContentItem(
         label: FamilyInformationContent.label,
-        content: FamilyInformationContent(),
+        content: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<FamilyMembersCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<CreateFamilyMemberCubit>(),
+            ),
+          ],
+          child: const FamilyInformationContent(),
+        ),
       ),
-      const ContentItem(
+      ContentItem(
         label: FeesContent.label,
-        content: FeesContent(),
+        content: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<FeeCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<FeeDiscountsCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<PaymentPlansCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<CreateFeeDiscountCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<CreatePaymentPlanCubit>(),
+            ),
+          ],
+          child: const FeesContent(),
+        ),
       ),
-      const ContentItem(
+      ContentItem(
         label: PaymentsContent.label,
-        content: PaymentsContent(),
+        content: BlocProvider(
+          create: (context) => getIt<PaymentsCubit>(),
+          child: const PaymentsContent(),
+        ),
       ),
     ];
 

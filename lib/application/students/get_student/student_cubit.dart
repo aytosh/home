@@ -14,7 +14,7 @@ class StudentCubit extends Cubit<StudentState> {
 
   StudentCubit(this._repository) : super(const StudentState.initial());
 
-  Future<void> getStudent(String id) async {
+  Future<void> getStudent(int id) async {
     emit(const StudentState.loadInProgress());
     final failureOrMessages = await _repository.getStudent(id);
     emit(

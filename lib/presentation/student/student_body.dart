@@ -16,21 +16,17 @@ class StudentBody extends HookWidget {
   Widget build(BuildContext context) {
     final pageController = usePageController();
 
-    final labels = contentItems.map((tabPage) => tabPage.label).toList();
-    final contents = contentItems.map((tabPage) => tabPage.content).toList();
+    final labels = contentItems.map((e) => e.label).toList();
+    final contents = contentItems.map((e) => e.content).toList();
 
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(
-            top: 73,
-            bottom: 36,
-          ),
-          child: Text(
-            "Ученики".toUpperCase(),
-            style: kPageItemTitleStyle,
-          ),
+        const SizedBox(height: 73),
+        Text(
+          "Ученики".toUpperCase(),
+          style: kItemTitleStyle,
         ),
+        const SizedBox(height: 36),
         const StudentInformation(),
         const SizedBox(height: 45),
         Container(
@@ -39,7 +35,8 @@ class StudentBody extends HookWidget {
           child: Column(
             children: [
               const SizedBox(height: 17),
-              Padding(
+              Container(
+                alignment: Alignment.topLeft,
                 padding: const EdgeInsets.symmetric(horizontal: 34),
                 child: CustomTabBar(
                   onTap: (value) {

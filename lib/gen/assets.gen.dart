@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 
@@ -28,9 +28,20 @@ class $AssetsImagesGen {
   AssetGenImage get background =>
       const AssetGenImage('assets/images/background.png');
 
+  /// File path: assets/images/calendar.png
+  AssetGenImage get calendar =>
+      const AssetGenImage('assets/images/calendar.png');
+
   /// File path: assets/images/checkbox.png
   AssetGenImage get checkbox =>
       const AssetGenImage('assets/images/checkbox.png');
+
+  /// File path: assets/images/checked.png
+  AssetGenImage get checked => const AssetGenImage('assets/images/checked.png');
+
+  /// File path: assets/images/dropdown_arrow.png
+  AssetGenImage get dropdownArrow =>
+      const AssetGenImage('assets/images/dropdown_arrow.png');
 
   /// File path: assets/images/grade_arrow_down.png
   AssetGenImage get gradeArrowDown =>
@@ -57,7 +68,10 @@ class $AssetsImagesGen {
         arrowDown,
         arrowRight,
         background,
+        calendar,
         checkbox,
+        checked,
+        dropdownArrow,
         gradeArrowDown,
         gradeArrowUp,
         profileBackground,

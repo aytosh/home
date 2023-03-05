@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_management/application/auth/login_form/login_form_bloc.dart';
 import 'package:school_management/injectable.dart';
 import 'package:school_management/presentation/common/widgets/base.dart';
-import 'package:school_management/presentation/auth/login/login_form.dart';
+import 'package:school_management/presentation/auth/login/login_body.dart';
 
 class LoginScreen extends StatelessWidget {
   static const path = "/login";
@@ -13,17 +13,9 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Base(
-      body: SizedBox.fromSize(
-        size: MediaQuery.of(context).size,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            BlocProvider(
-              create: (context) => getIt<LoginFormBloc>(),
-              child: const LoginForm(),
-            ),
-          ],
-        ),
+      body: BlocProvider(
+        create: (context) => getIt<LoginFormBloc>(),
+        child: const LoginBody(),
       ),
     );
   }

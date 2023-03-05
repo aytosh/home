@@ -11,17 +11,15 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 51,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: kLoginButtonDecoration,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(15),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            onTap: () {
-              onTap?.call();
-            },
-            child: child,
-          ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () {
+            onTap?.call();
+          },
+          child: child,
         ),
       ),
     );

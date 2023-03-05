@@ -35,13 +35,12 @@ final kAddButtonDecoration = BoxDecoration(
 final kCreateFormDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(5),
   color: kBackgroundColor,
-  border: kPinkBorder,
 );
 
 final kCreateDropdownDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(5),
   color: kBackgroundColor,
-  border: kPinkBorder,
+
 );
 
 final kCreateDropdownOptionsDecoration = BoxDecoration(
@@ -59,3 +58,27 @@ final kBackgroundDecoration = BoxDecoration(
   color: kBackgroundColor,
   boxShadow: [kBackgroundShadow],
 );
+
+const kSearchOptionsDecoration = BoxDecoration(
+  color: kSecondaryColor,
+);
+
+final kFilterDropdownDecoration = BoxDecoration(
+  color: kBackgroundColor,
+  borderRadius: BorderRadius.circular(5),
+  border: Border.all(
+    color: kPrimaryColor,
+    width: 0.5,
+  ),
+);
+
+final kFilterDropdownOptionDecoration = BoxDecoration(
+  color: kBackgroundColor,
+  border: Border.all(
+    color: kPrimaryColor,
+    width: 0.5,
+  ),
+);
+
+const kFilterDropdownSelectedOptionDecoration =
+    BoxDecoration(color: kSecondaryColor);

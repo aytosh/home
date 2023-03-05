@@ -34,7 +34,7 @@ final kRememberMeTextStyle = GoogleFonts.nunito(
   color: kPrimaryColor,
 );
 
-final kPageItemTitleStyle = GoogleFonts.nunito(
+final kItemTitleStyle = GoogleFonts.nunito(
   color: kPrimaryColor,
   fontWeight: FontWeight.w800,
   fontSize: 42,
@@ -73,7 +73,7 @@ final kCountTextStyle = GoogleFonts.montserrat(
   fontSize: 12,
 );
 
-final kNoElementsTextStyle = GoogleFonts.montserrat(
+final kNoElementsTextStyle = GoogleFonts.nunito(
   color: kTextColor,
   fontWeight: FontWeight.w600,
   fontSize: 21,
@@ -85,15 +85,23 @@ final kCreateFormHintStyle = GoogleFonts.montserrat(
   fontSize: 11,
 );
 
-final kCreateDropdownTextStyle = GoogleFonts.montserrat(
+final kCreateDropdownTextStyle = GoogleFonts.nunito(
   color: kTextGreyColor,
   fontWeight: FontWeight.w600,
   fontSize: 11,
 );
 
-final kCreateButtonTilteStyle = GoogleFonts.montserrat(
+final kCreateDropdownOptionTextStyle = GoogleFonts.nunito(
+  color: kTextGreyColor,
+  fontWeight: FontWeight.w600,
+  fontSize: 10,
+);
+
+final kCreateButtonTilteStyle = GoogleFonts.nunito(
   color: kPrimaryColor,
+  fontSize: 12,
   fontWeight: FontWeight.w700,
+  letterSpacing: 1.4,
 );
 
 final kPaymentPlansHeaderStyle = GoogleFonts.montserrat(
@@ -102,8 +110,29 @@ final kPaymentPlansHeaderStyle = GoogleFonts.montserrat(
   fontSize: 16,
 );
 
-final kFeeInformationTextStyle = GoogleFonts.montserrat(
+final kFeeInformationTextStyle = GoogleFonts.nunito(
   color: kPrimaryColor,
   fontWeight: FontWeight.w800,
   fontSize: 16,
+);
+
+final kSearchOptionTextStyle = GoogleFonts.nunito(
+  color: kTextLightColor,
+  fontSize: 16,
+);
+
+final kDialogTitleStyle = GoogleFonts.nunito(
+  color: kTextLightColor,
+  fontSize: 24,
+  fontWeight: FontWeight.w800,
+);
+
+final kFilterDropdownText = GoogleFonts.nunito(
+  color: kPrimaryColor,
+  fontWeight: FontWeight.w500,
+);
+
+final kFilterDropdownSelectedText = GoogleFonts.nunito(
+  color: Colors.white,
+  fontWeight: FontWeight.w500,
 );

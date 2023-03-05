@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:school_management/gen/assets.gen.dart';
+import 'package:school_management/presentation/common/constants/colors.dart';
 import 'package:school_management/presentation/common/constants/decorations.dart';
 import 'package:school_management/presentation/common/constants/styles.dart';
 
@@ -24,11 +25,12 @@ class CustomSearchField extends StatelessWidget {
       child: TextField(
         controller: controller,
         focusNode: focusNode,
+        cursorColor: kSecondaryColor,
         decoration: InputDecoration(
           isDense: true,
           contentPadding: const EdgeInsets.only(top: 10, left: 11),
           hintStyle: kTextGreyStyle,
-          hintText: text,
+          hintText: text ?? "Search",
           suffixIconConstraints: const BoxConstraints(maxHeight: 25.72),
           suffixIcon: Padding(
             padding: const EdgeInsets.only(top: 5.72, right: 12.83),

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:school_management/presentation/common/constants/colors.dart';
 import 'package:school_management/presentation/common/constants/styles.dart';
-import 'package:school_management/presentation/common/utils/student_card_filter.dart';
+import 'package:school_management/presentation/common/utils/student_filter.dart';
 import 'package:school_management/presentation/common/widgets/custom_add_button.dart';
-import 'package:school_management/presentation/home/pages/students/components/student_cards_layout.dart';
-import 'package:school_management/presentation/home/pages/students/student_create_dialog/show_student_create_dialog.dart';
-import 'package:school_management/presentation/home/pages/students/widgets/student_card_count_text.dart';
-import 'package:school_management/presentation/home/widgets/custom_search_field.dart';
+import 'package:school_management/presentation/home/pages/students/components/students_layout.dart';
+import 'package:school_management/presentation/home/pages/students/components/student_search_bar.dart';
+import 'package:school_management/presentation/home/pages/students/dialog/show_student_create_dialog.dart';
+import 'package:school_management/presentation/home/pages/students/widgets/student_count_text.dart';
+import 'package:school_management/presentation/home/widgets/custom_filter_dropdown.dart';
 
 class StudentsPage extends StatelessWidget {
   static const title = "Ученики";
@@ -15,52 +18,47 @@ class StudentsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final studentCardFiltersCountTexts = [
-      const StudentCardCountText(
+    final studentFiltersCountTexts = [
+      const StudentCountText(
         label: "Выпускник",
-        studentCardFilters: [
-          StudentCardFilter(name: "status", value: "graduated"),
+        studentFilters: [
+          StudentFilter(name: "status", value: "graduated"),
         ],
       ),
-      const StudentCardCountText(
+      const StudentCountText(
         label: "Отчисленный",
-        studentCardFilters: [
-          StudentCardFilter(name: "status", value: "out-of"),
+        studentFilters: [
+          StudentFilter(name: "status", value: "out-of"),
         ],
       ),
-      const StudentCardCountText(
+      const StudentCountText(
         label: "Не подтвержденный",
-        studentCardFilters: [
-          StudentCardFilter(name: "status", value: "not-confirmed"),
-          StudentCardFilter(name: "status", value: "pre-registered"),
+        studentFilters: [
+          StudentFilter(name: "status", value: "not-confirmed"),
+          StudentFilter(name: "status", value: "pre-registered"),
         ],
       ),
-      const StudentCardCountText(
+      const StudentCountText(
         label: "Активный",
-        studentCardFilters: [
-          StudentCardFilter(name: "status", value: "active"),
+        studentFilters: [
+          StudentFilter(name: "status", value: "active"),
         ],
       ),
-      const StudentCardCountText(
+      const StudentCountText(
         label: "Итого",
-        studentCardFilters: [],
+        studentFilters: [],
       ),
     ];
 
     return Padding(
-      padding: const EdgeInsets.only(top: 58, bottom: 179) +
-          const EdgeInsets.symmetric(horizontal: 97),
+      padding: const EdgeInsets.symmetric(horizontal: 97),
       child: Column(
         children: [
-          Row(
-            children: const [
-              Flexible(child: CustomSearchField(text: "Поиск")),
-            ],
-          ),
+          const SizedBox(height: 59),
+          const StudentSearchBar(),
           const SizedBox(height: 32),
-          const StudentCardsLayout(),
+          const StudentsLayout(),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
@@ -82,23 +80,100 @@ class StudentsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(width: 30),
-              Flexible(
-                child: Container(
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(top: 37),
+                child: SizedBox(
                   height: 15,
-                  margin: const EdgeInsets.only(top: 37),
                   child: ListView.separated(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
-                    itemCount: studentCardFiltersCountTexts.length,
-                    itemBuilder: (_, index) =>
-                        studentCardFiltersCountTexts[index],
+                    itemCount: studentFiltersCountTexts.length,
+                    itemBuilder: (_, index) => studentFiltersCountTexts[index],
                     separatorBuilder: (_, __) => const SizedBox(width: 25),
                   ),
                 ),
               ),
             ],
           ),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 44),
+                child: Row(
+                  children: [
+                    CustomFilterDropdown<String>(
+                      onChange: (value) {},
+                      items: const [
+                        "Активный",
+                        "Отчисленный",
+                        "Не подтвержденный",
+                      ],
+                      title: "Академический статус",
+                      text: "Активный",
+                    ),
+                    const SizedBox(width: 80),
+                    CustomFilterDropdown<String>(
+                      onChange: (value) {},
+                      items: const [
+                        "1-А",
+                        "1-А",
+                        "1-А",
+                        "1-А",
+                        "1-А",
+                        "1-А",
+                      ],
+                      title: "Класс",
+                      text: "Все классы",
+                    ),
+                    const SizedBox(width: 80),
+                    CustomFilterDropdown<String>(
+                      onChange: (value) {},
+                      items: const [
+                        "Женский",
+                        "Мужской",
+                      ],
+                      title: "Пол",
+                      text: "Женский",
+                    ),
+                  ],
+                ),
+              ),
+              const Spacer(),
+              //TODO: See
+              Padding(
+                padding: const EdgeInsets.only(top: 102),
+                child: Container(
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  decoration: BoxDecoration(
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {},
+                      child: SizedBox(
+                        height: 37,
+                        width: 151,
+                        child: Center(
+                          child: Text(
+                            "Показать",
+                            style: GoogleFonts.nunito(
+                              color: kTextLightColor,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 77),
+            ],
+          ),
+          const SizedBox(height: 280),
         ],
       ),
     );
